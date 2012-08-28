@@ -100,10 +100,10 @@ $(function() {
 	// Used to animate the header
 	$('#HeaderSlidingBar #HeaderClickableBar').toggle(function(){
 		$('#HeaderSlidingBar').animate({'top':0 + "px"});
-		$('#MovingTargetsTab').attr("src", "Icons2/Header/topBarArrowUp.png");
+		$('#MovingTargetsTab').attr("src", "/domainName/img/AET/Header/topBarArrowUp.png");
 	}, function(){
 		$('#HeaderSlidingBar').animate({'top':-150 + "px"});
-		$('#MovingTargetsTab').attr("src", "Icons2/Header/topBarArrowDown.png");
+		$('#MovingTargetsTab').attr("src", "/domainName/img/AET/Header/topBarArrowDown.png");
 	});
    
    /*
@@ -222,10 +222,10 @@ function tabSwitch(new_tab, new_content) {
 
 function CreateNewSticky(nameOfSticky)
 {
-	var htmlData='<div class="sticky sticky-clone ui-draggable user-created-sticky sticky_editable shadow" contenteditable="true"><p>Drag me around</p></div>';
+	var htmlData='<div class="sticky sticky-clone ui-draggable user-created-sticky sticky_editable shadow" contenteditable="true"><p></p></div>';
 	$('#stickyList').append(htmlData);
 	// Fix below
-	$('.sticky-clone').draggable({stack: ".sticky-clone"}).last().attr('id', 'userSticky' + stickyUniqueId++).find( "p" ).html( "" );
+	$('.sticky-clone').draggable({stack: ".sticky-clone"}).last().attr({'id': 'userSticky' + stickyUniqueId++, 'left': 200}).css({'position':'absolute', 'left':500, 'top':350});
 };
 
 function countNumberOfGreenCards(){

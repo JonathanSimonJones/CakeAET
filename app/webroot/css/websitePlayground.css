@@ -240,10 +240,10 @@ li.greenCardDescription p{
 */
 
  .user-created-sticky{
-	position:relative; 
+	/*position:relative; */
 	background: #339900; 
-	top: 500px; 
-	left: 500px;
+	/*top: 500px;
+	left: 500px;*/
 }
 
 /*

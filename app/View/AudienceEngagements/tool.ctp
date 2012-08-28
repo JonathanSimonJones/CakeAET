@@ -21,7 +21,15 @@
 		</div>
 	</header>
 	
+	<!--<button type="button" style="position: absolute; top: 100px;"><?php //echo $this->Html->link('Click here to show flash message', array('action' => 'tool', 4)); ?></button> -->
+	
 	<section id="StickySpace">
+		<div style="position: absolute; top: 100px;">
+			<?php echo $this->Session->flash(); ?>
+			<?php echo $this->Html->link('This one is 4', array('controller' => 'audienceEngagements', 'action' => 'tool', '4')); ?>
+			<?php echo $this->Html->link('This one is 6', array('controller' => 'audienceEngagements', 'action' => 'tool', '6')); ?>
+			<?php echo $this->Html->link('This is plain tool', array('controller' => 'audienceEngagements', 'action' => 'tool')); ?>
+		</div>
 		<ul id="RightHandBar">
 			<li>
 				<div id="StickyNoteIcon" class="sticky sticky_editable RightBarIcon">
