@@ -3,6 +3,11 @@ a, ul{
 	padding: 0px;
 	margin: 0px;
 }
+
+/* 
+	Sticky styles
+*/
+
 .sticky{ 
 }
 .greenSticky{
@@ -14,6 +19,13 @@ a, ul{
 }
 #stickyList{}
 
+.cross{
+	background-image:url(../img/AET/Icons/Cross.png);
+	width: 17px;
+	height: 16px;
+	margin-top: 5px;
+	float:right;
+}
 /* 
 	Header styles
 */

@@ -44,10 +44,10 @@ var drpOptions = {	accept: ".sticky-clone",
 
 $(document).ready(function()
 {
-var numGreenCards = countNumberOfGreenCards();
+	var numGreenCards = countNumberOfGreenCards();
 
 	$("#AddGreenCard").click(function(){
-		CreateNewSticky();
+		CreateNewSticky('green', '', 350, 350);
 		return false;
 	});
 
@@ -94,7 +94,8 @@ $(function() {
 							}).bind('click', function()
 							{
 								$(this).focus();
-							});
+							}
+							);
 	});
 
 	// Used to animate the header
@@ -220,12 +221,37 @@ function tabSwitch(new_tab, new_content) {
 	document.getElementById(new_tab).className = 'active';
 };
 
-function CreateNewSticky(nameOfSticky)
+function CreateNewSticky(colour, body, xPos, yPos)
 {
-	var htmlData='<div class="sticky sticky-clone ui-draggable user-created-sticky sticky_editable shadow" contenteditable="true"><p></p></div>';
-	$('#stickyList').append(htmlData);
-	// Fix below
-	$('.sticky-clone').draggable({stack: ".sticky-clone"}).last().attr({'id': 'userSticky' + stickyUniqueId++, 'left': 200}).css({'position':'absolute', 'left':500, 'top':350});
+	if(xPos < 0)
+	{
+		xPos = 350;
+	}
+	if(yPos < 0)
+	{
+		yPos = 350;
+	}
+	
+	$(document).ready(function()
+	{
+		if(colour === 'green')
+		{
+			var htmlData='<div class="sticky sticky-clone ui-draggable user-created-sticky sticky_editable shadow" contenteditable="true"><p>' + body + '</p></div>'; 
+			//var htmlData='<div class="sticky sticky-clone ui-draggable user-created-sticky sticky_editable shadow" contenteditable="true"><textarea cols="20" rows="5">Text should appear here</textarea></div>'; 
+			$('#stickyList').append(htmlData);
+			// Fix below
+			$('.sticky-clone').draggable({stack: ".sticky-clone"}).last().attr({'id': 'userSticky' + stickyUniqueId++}).css({'position':'absolute', 'left': xPos, 'top': yPos});
+			//createStickyInDatabase( stickyUniqueId, "green", "placeholder body" );
+		}
+		else if(colour === 'paleYellow')
+		{
+			$('#StickyNoteIcon').clone().removeClass('box ui-draggable-dragging GreyOverlay RightBarIcon sticky').addClass('sticky-clone shadow').css({'position':'absolute', 'left': xPos, 'top': yPos}).appendTo('#stickyList').attr('id', 'userSticky' + stickyUniqueId++).find( "p" ).html( body );
+		}
+		else
+		{
+			alert('Shit J, create new sticky caused a boo boo, you gave the wrong colour to the function');
+		}
+	});
 };
 
 function countNumberOfGreenCards(){
@@ -272,3 +298,13 @@ function switchOverlayState(state)
 					break;
 	};
 };
+
+function createStickyInDatabase(idOfSticky, colour, body ){
+	$.ajax({
+	type: "POST",
+	url: "AddStickyNoteToDatabase.php",
+	data: {'id': idOfSticky, 'colour': colour, 'body': body, 'brainstormId': 'firstTest' }
+	}).done(function(html){
+		$('#AjaxChecker').html('Added Sticky with ID ' + idOfSticky);
+	});
+}

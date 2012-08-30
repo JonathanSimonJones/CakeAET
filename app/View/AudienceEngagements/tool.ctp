@@ -1,8 +1,8 @@
 <?php
 	
-	echo $this->Html->script('jquery');
-	echo $this->Html->script('jquery-ui');
-	echo $this->Html->script('websitePlayground');
+	echo $this->Html->script('jquery', FALSE);
+	echo $this->Html->script('jquery-ui', FALSE);
+	echo $this->Html->script('websitePlayground', FALSE);
 ?>
 
 <div id="Surface">
@@ -29,6 +29,7 @@
 			<?php echo $this->Html->link('This one is 4', array('controller' => 'audienceEngagements', 'action' => 'tool', '4')); ?>
 			<?php echo $this->Html->link('This one is 6', array('controller' => 'audienceEngagements', 'action' => 'tool', '6')); ?>
 			<?php echo $this->Html->link('This is plain tool', array('controller' => 'audienceEngagements', 'action' => 'tool')); ?>
+			<p id="AjaxChecker"></p>
 		</div>
 		<ul id="RightHandBar">
 			<li>
@@ -76,7 +77,7 @@
 						Sustain the engagement
 					</a>
 				</li>
-			</ul>  
+			</ul>
 			  
 			<div id="content_1" class="footerTabContent">
 				<ul>
@@ -207,3 +208,9 @@
 		</ul>
 	</div>
 </div><!-- End overlay-->
+
+<?php foreach ($stickies as $sticky): ?>
+    <script>
+		CreateNewSticky('<?php echo $sticky['AudienceEngagement']['colour']; ?>','<?php echo $sticky['AudienceEngagement']['body']; ?>', <?php echo $sticky['AudienceEngagement']['xPos']; ?>, <?php echo $sticky['AudienceEngagement']['yPos']; ?> );
+	</script>
+<?php endforeach; ?>

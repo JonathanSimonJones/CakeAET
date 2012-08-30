@@ -3,7 +3,7 @@
 <?php
 class AudienceEngagementsController extends AppController
 {
-	public $helpers = array('Js', 'Html', 'Form');
+	public $helpers = array('Js', 'Html', 'Form', 'Ajax');
 	
 	public function tool($var = 0)
 	{
@@ -15,6 +15,7 @@ class AudienceEngagementsController extends AppController
 		{
 			$this->Session->setFlash('This is when it is NOT 4');
 		}
+		
 		$this->set('stickies', $this->AudienceEngagement->find('all'));
 		$this->set('title_for_layout', 'Audience Engagement Tool');
 	}
