@@ -33,7 +33,7 @@ class AudienceEngagementsController extends AppController
 		}
 	}
 	
-	public function update_sticky_position_in_db()
+	public function update_sticky_postition_in_db()
 	{
 		// Check to see if the form is empty
 		if (!empty($this->data))
@@ -41,7 +41,7 @@ class AudienceEngagementsController extends AppController
 			// Check if the data has been saved successfully
 			if ($this->AudienceEngagement->save($this->data))
 			{
-				debug("Save was successful");
+				debug("Update was successful");
 			}
 		}
 	}

@@ -78,8 +78,16 @@ $(document).ready(function()
 		containment: '#Surface',
 		stop:function(event, ui)
 		{
-			$(ui.helper).clone(true).removeClass('box ui-draggable-dragging GreyOverlay RightBarIcon sticky').addClass('sticky-clone shadow').appendTo('#stickyList').attr('id', 'userSticky' + stickyUniqueId++).find( "p" ).html( "" );
+			//$(ui.helper).clone(true).removeClass('box ui-draggable-dragging GreyOverlay RightBarIcon sticky').addClass('sticky-clone shadow').appendTo('#stickyList').attr('id', '' + stickyUniqueId++).find( "p" ).html( "" );
 			//console.log("Hello World!");
+			if( $(this).hasClass('GreenTileIcon') )
+			{
+				CreateNewSticky("greenWithImage", "", $(ui.helper).position().left, $(ui.helper).position().top , $(ui.helper).attr('name') );
+			}
+			else
+			{
+				CreateNewSticky("paleYellow", "", $(ui.helper).position().left, $(ui.helper).position().top);
+			}
 		}
 	});
 });
@@ -151,7 +159,7 @@ $("RandomQuestion").css({'visibility': 'visible'});
 			
 			switch(currentGreenCardDescription)
 			{
-				case "Test Tile"	: $('#TestDesc').css({'display': 'block'});
+				case "Test-Tile"	: $('#TestDesc').css({'display': 'block'});
 										break;
 				case "Co design Tile": $('#CoDesignDesc').css({'display': 'block'});
 										break;
@@ -225,7 +233,7 @@ function tabSwitch(new_tab, new_content) {
 	document.getElementById(new_tab).className = 'active';
 };
 
-function CreateNewSticky(colour, body, xPos, yPos)
+function CreateNewSticky(colour, body, xPos, yPos, title)
 {
 	if(xPos < 0)
 	{
@@ -235,6 +243,9 @@ function CreateNewSticky(colour, body, xPos, yPos)
 	{
 		yPos = centerY;
 	}
+	//if(imageName === 'undefined')
+	//{
+	//}
 	
 	$(document).ready(function()
 	{
@@ -244,12 +255,19 @@ function CreateNewSticky(colour, body, xPos, yPos)
 			//var htmlData='<div class="sticky sticky-clone ui-draggable user-created-sticky sticky_editable shadow" contenteditable="true"><textarea cols="20" rows="5">Text should appear here</textarea></div>'; 
 			$('#stickyList').append(htmlData);
 			// Fix below
-			$('.sticky-clone').draggable({stack: ".sticky-clone"}).last().attr({'id': 'userSticky' + stickyUniqueId++}).css({'position':'absolute', 'left': xPos, 'top': yPos});
-			createStickyInDatabase( stickyUniqueId, "green", " " );
+			$('.sticky-clone').draggable({stack: ".sticky-clone"}).last().attr({'id': stickyUniqueId++}).css({'position':'absolute', 'left': xPos, 'top': yPos});
+			createStickyInDatabase( stickyUniqueId, "green", "", "firstTest", centerX, centerY);
 		}
 		else if(colour === 'paleYellow')
 		{
-			$('#StickyNoteIcon').clone().removeClass('box ui-draggable-dragging GreyOverlay RightBarIcon sticky').addClass('sticky-clone shadow').css({'position':'absolute', 'left': xPos, 'top': yPos}).appendTo('#stickyList').attr('id', 'userSticky' + stickyUniqueId++).find( "p" ).html( body );
+			$('#StickyNoteIcon').clone().removeClass('box ui-draggable-dragging GreyOverlay RightBarIcon sticky').addClass('sticky-clone shadow').css({'position':'absolute', 'left': xPos, 'top': yPos}).appendTo('#stickyList').attr('id', stickyUniqueId++).find( "p" ).html( body );
+			createStickyInDatabase( stickyUniqueId, "paleYellow", "", "firstTest", xPos, yPos);
+		}
+		else if(colour === 'greenWithImage')
+		{
+			var greenCardSelector = 'img[name=' + title + ']';
+			$(greenCardSelector).first().clone().removeClass('box ui-draggable-dragging GreyOverlay RightBarIcon sticky').addClass('sticky-clone shadow').css({'position':'absolute', 'left': xPos, 'top': yPos}).appendTo('#stickyList').attr('id', stickyUniqueId++).find( "p" ).html( body );
+			//createStickyInDatabase( stickyUniqueId, "green", "", "firstTest", centerX, centerY);
 		}
 		else
 		{
@@ -277,12 +295,11 @@ function CreateNewStickyStartUp(colour, body, xPos, yPos)
 			//var htmlData='<div class="sticky sticky-clone ui-draggable user-created-sticky sticky_editable shadow" contenteditable="true"><textarea cols="20" rows="5">Text should appear here</textarea></div>'; 
 			$('#stickyList').append(htmlData);
 			// Fix below
-			$('.sticky-clone').draggable({stack: ".sticky-clone"}).last().attr({'id': 'userSticky' + stickyUniqueId++}).css({'position':'absolute', 'left': xPos, 'top': yPos});
-			//createStickyInDatabase( stickyUniqueId, "green", "placeholder body" );
+			$('.sticky-clone').draggable({stack: ".sticky-clone"}).last().attr({'id': stickyUniqueId++}).css({'position':'absolute', 'left': xPos, 'top': yPos});
 		}
 		else if(colour === 'paleYellow')
 		{
-			$('#StickyNoteIcon').clone().removeClass('box ui-draggable-dragging GreyOverlay RightBarIcon sticky').addClass('sticky-clone shadow').css({'position':'absolute', 'left': xPos, 'top': yPos}).appendTo('#stickyList').attr('id', 'userSticky' + stickyUniqueId++).find( "p" ).html( body );
+			$('#StickyNoteIcon').clone().removeClass('box ui-draggable-dragging GreyOverlay RightBarIcon sticky').addClass('sticky-clone shadow').css({'position':'absolute', 'left': xPos, 'top': yPos}).appendTo('#stickyList').attr('id', stickyUniqueId++).find( "p" ).html( body );
 		}
 		else
 		{
@@ -336,22 +353,22 @@ function switchOverlayState(state)
 	};
 };
 
-function createStickyInDatabase(idOfSticky, colour, body ){
+function createStickyInDatabase(idOfSticky, colour, body, brainstormName, xPos, yPos){
 	$.ajax({
 	type: "POST",
 	url: "/domainName/AudienceEngagements/add_sticky_to_database",
-	data: {'id': idOfSticky, 'colour': colour, 'body': body, 'brainstormId': 'firstTest' }
+	data: {'id': idOfSticky, 'colour': colour, 'body': body, 'brainstormId': brainstormName, 'xPos' : xPos, 'yPos' : yPos }
 	}).done(function(html){
 		$('#AjaxChecker').html('Added Sticky with ID ' + idOfSticky);
 	});
 }
 
-function updateStickyInDB(idOfSticky, colour, body ){
+function updateStickyPositionInDB(idOfSticky, brainstormName, xPos, yPos ){
 	$.ajax({
 	type: "POST",
-	url: "/domainName/AudienceEngagements/add_sticky_to_database",
-	data: {'id': idOfSticky, 'colour': colour, 'body': body, 'brainstormId': 'firstTest' }
+	url: "/domainName/AudienceEngagements/update_sticky_position_in_db",
+	data: {'id': idOfSticky, 'brainstormId': brainstormName, 'xPos' : xPos, 'yPos' : yPos }
 	}).done(function(html){
-		$('#AjaxChecker').html('Added Sticky with ID ' + idOfSticky);
+		$('#AjaxChecker').html('Updated sticky with ID ' + idOfSticky);
 	});
 }

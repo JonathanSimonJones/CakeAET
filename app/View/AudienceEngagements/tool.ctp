@@ -81,50 +81,50 @@
 			  
 			<div id="content_1" class="footerTabContent">
 				<ul>
-					<li><?php echo $this->Html->image('AET/GreenCards/test.png', 				array('width' => 100, 'height' => 100, 'title' => 'Test Tile', 				'class' => 'GreenTileIcon CreateBetaTest sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/Codesign.png', 			array('width' => 100, 'height' => 100, 'title' => 'Co design Tile', 		'class' => 'GreenTileIcon CreateCoDesign sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/contribute.png', 			array('width' => 100, 'height' => 100, 'title' => 'Contribute Tile',		'class' => 'GreenTileIcon CreateContribute sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/create.png', 				array('width' => 100, 'height' => 100, 'title' => 'Create Tile', 			'class' => 'GreenTileIcon CreateCreation sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/evaluate.png', 			array('width' => 100, 'height' => 100, 'title' => 'Evaluate Tile', 			'class' => 'GreenTileIcon CreateEvaluate sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/extra%20content.png',		array('width' => 100, 'height' => 100, 'title' => 'Extra Content Tile', 	'class' => 'GreenTileIcon CreateExtraContent sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/show%20loyalty.png', 		array('width' => 100, 'height' => 100, 'title' => 'Show Loyalty Tile', 		'class' => 'GreenTileIcon CreateLoyalty GreyOverlay sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/see%20the%20process.png', array('width' => 100, 'height' => 100, 'title' => 'See the process Tile', 	'class' => 'GreenTileIcon CreateSeeProcess sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/Share.png', 				array('width' => 100, 'height' => 100, 'title' => 'Share Tile', 			'class' => 'GreenTileIcon CreateShare sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/talk%20to%20others.png', 	array('width' => 100, 'height' => 100, 'title' => 'Talk To Others Tile', 	'class' => 'GreenTileIcon CreateTalkToOthers sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/talk%20to%20you.png', 	array('width' => 100, 'height' => 100, 'title' => 'Talk To You Tile', 		'class' => 'GreenTileIcon CreateTalkToYou sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/unique.png', 				array('width' => 100, 'height' => 100, 'title' => 'Unique Tile', 			'class' => 'GreenTileIcon CreateUnique GreyOverlay sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/test.png', 				array('width' => 100, 'height' => 100, 'title' => 'Test Tile', 				'name' => 'Test-Tile', 				'class' => 'GreenTileIcon CreateBetaTest sticky' ))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/Codesign.png', 			array('width' => 100, 'height' => 100, 'title' => 'Co design Tile', 		'name' => 'Co-Design-Tile',			'class' => 'GreenTileIcon CreateCoDesign sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/contribute.png', 			array('width' => 100, 'height' => 100, 'title' => 'Contribute Tile',		'name' => 'Contribute-Tile',		'class' => 'GreenTileIcon CreateContribute sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/create.png', 				array('width' => 100, 'height' => 100, 'title' => 'Create Tile', 			'name' => 'Create-Tile',			'class' => 'GreenTileIcon CreateCreation sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/evaluate.png', 			array('width' => 100, 'height' => 100, 'title' => 'Evaluate Tile', 			'name' => 'Evaluate-Tile',			'class' => 'GreenTileIcon CreateEvaluate sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/extra%20content.png',		array('width' => 100, 'height' => 100, 'title' => 'Extra Content Tile', 	'name' => 'Extra-Content-Tile',		'class' => 'GreenTileIcon CreateExtraContent sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/show%20loyalty.png', 		array('width' => 100, 'height' => 100, 'title' => 'Show Loyalty Tile', 		'name' => 'Show-Loyalty-Tile',		'class' => 'GreenTileIcon CreateLoyalty GreyOverlay sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/see%20the%20process.png', array('width' => 100, 'height' => 100, 'title' => 'See the process Tile', 	'name' => 'See-The-Process-Tile',	'class' => 'GreenTileIcon CreateSeeProcess sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/Share.png', 				array('width' => 100, 'height' => 100, 'title' => 'Share Tile', 			'name' => 'Share-Tile',				'class' => 'GreenTileIcon CreateShare sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/talk%20to%20others.png', 	array('width' => 100, 'height' => 100, 'title' => 'Talk To Others Tile', 	'name' => 'Talk-To-Others-Tile',	'class' => 'GreenTileIcon CreateTalkToOthers sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/talk%20to%20you.png', 	array('width' => 100, 'height' => 100, 'title' => 'Talk To You Tile', 		'name' => 'Talk-To-You-Tile',		'class' => 'GreenTileIcon CreateTalkToYou sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/unique.png', 				array('width' => 100, 'height' => 100, 'title' => 'Unique Tile', 			'name' => 'Unique-Tile',			'class' => 'GreenTileIcon CreateUnique GreyOverlay sticky'))?></li>
 				</ul>
 			</div>  
 			<div id="content_2" class="footerTabContent">
 				<ul>
-					<li><?php echo $this->Html->image('AET/GreenCards/test.png', 				array('width' => 100, 'height' => 100, 'title' => 'Test Tile', 				'class' => 'GreenTileIcon CreateBetaTest GreyOverlay sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/Codesign.png', 			array('width' => 100, 'height' => 100, 'title' => 'Co design Tile', 		'class' => 'GreenTileIcon CreateCoDesign GreyOverlay sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/contribute.png', 			array('width' => 100, 'height' => 100, 'title' => 'Contribute Tile',		'class' => 'GreenTileIcon CreateContribute sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/create.png', 				array('width' => 100, 'height' => 100, 'title' => 'Create Tile', 			'class' => 'GreenTileIcon CreateCreation sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/evaluate.png', 			array('width' => 100, 'height' => 100, 'title' => 'Evaluate Tile', 			'class' => 'GreenTileIcon CreateEvaluate sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/extra%20content.png',		array('width' => 100, 'height' => 100, 'title' => 'Extra Content Tile', 	'class' => 'GreenTileIcon CreateExtraContent sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/show%20loyalty.png', 		array('width' => 100, 'height' => 100, 'title' => 'Show Loyalty Tile', 		'class' => 'GreenTileIcon CreateLoyalty GreyOverlay sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/see%20the%20process.png', array('width' => 100, 'height' => 100, 'title' => 'See the process Tile', 	'class' => 'GreenTileIcon CreateSeeProcess sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/Share.png', 				array('width' => 100, 'height' => 100, 'title' => 'Share Tile', 			'class' => 'GreenTileIcon CreateShare sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/talk%20to%20others.png', 	array('width' => 100, 'height' => 100, 'title' => 'Talk To Others Tile', 	'class' => 'GreenTileIcon CreateTalkToOthers sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/talk%20to%20you.png', 	array('width' => 100, 'height' => 100, 'title' => 'Talk To You Tile', 		'class' => 'GreenTileIcon CreateTalkToYou sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/unique.png', 				array('width' => 100, 'height' => 100, 'title' => 'Unique Tile', 			'class' => 'GreenTileIcon CreateUnique sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/test.png', 				array('width' => 100, 'height' => 100, 'title' => 'Test Tile', 				'name' => 'Test-Tile', 				'class' => 'GreenTileIcon CreateBetaTest GreyOverlay sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/Codesign.png', 			array('width' => 100, 'height' => 100, 'title' => 'Co design Tile', 		'name' => 'Co-Design-Tile',			'class' => 'GreenTileIcon CreateCoDesign GreyOverlay sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/contribute.png', 			array('width' => 100, 'height' => 100, 'title' => 'Contribute Tile',		'name' => 'Contribute-Tile',		'class' => 'GreenTileIcon CreateContribute sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/create.png', 				array('width' => 100, 'height' => 100, 'title' => 'Create Tile', 			'name' => 'Create-Tile',			'class' => 'GreenTileIcon CreateCreation sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/evaluate.png', 			array('width' => 100, 'height' => 100, 'title' => 'Evaluate Tile', 			'name' => 'Evaluate-Tile',			'class' => 'GreenTileIcon CreateEvaluate sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/extra%20content.png',		array('width' => 100, 'height' => 100, 'title' => 'Extra Content Tile', 	'name' => 'Extra-Content-Tile',		'class' => 'GreenTileIcon CreateExtraContent sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/show%20loyalty.png', 		array('width' => 100, 'height' => 100, 'title' => 'Show Loyalty Tile', 		'name' => 'Show-Loyalty-Tile',		'class' => 'GreenTileIcon CreateLoyalty GreyOverlay sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/see%20the%20process.png', array('width' => 100, 'height' => 100, 'title' => 'See the process Tile', 	'name' => 'See-The-Process-Tile',	'class' => 'GreenTileIcon CreateSeeProcess sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/Share.png', 				array('width' => 100, 'height' => 100, 'title' => 'Share Tile', 			'name' => 'Share-Tile',				'class' => 'GreenTileIcon CreateShare sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/talk%20to%20others.png', 	array('width' => 100, 'height' => 100, 'title' => 'Talk To Others Tile', 	'name' => 'Talk-To-Others-Tile',	'class' => 'GreenTileIcon CreateTalkToOthers sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/talk%20to%20you.png', 	array('width' => 100, 'height' => 100, 'title' => 'Talk To You Tile', 		'name' => 'Talk-To-You-Tile',		'class' => 'GreenTileIcon CreateTalkToYou sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/unique.png', 				array('width' => 100, 'height' => 100, 'title' => 'Unique Tile', 			'name' => 'Unique-Tile',			'class' => 'GreenTileIcon CreateUnique sticky'))?></li>
 				</ul>
 			</div>  
 			<div id="content_3" class="footerTabContent">
 				<ul>
-					<li><?php echo $this->Html->image('AET/GreenCards/test.png', 				array('width' => 100, 'height' => 100, 'title' => 'Test Tile', 				'class' => 'GreenTileIcon CreateBetaTest GreyOverlay sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/Codesign.png', 			array('width' => 100, 'height' => 100, 'title' => 'Co design Tile', 		'class' => 'GreenTileIcon CreateCoDesign GreyOverlay sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/contribute.png', 			array('width' => 100, 'height' => 100, 'title' => 'Contribute Tile',		'class' => 'GreenTileIcon CreateContribute GreyOverlay sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/create.png', 				array('width' => 100, 'height' => 100, 'title' => 'Create Tile', 			'class' => 'GreenTileIcon CreateCreation sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/evaluate.png', 			array('width' => 100, 'height' => 100, 'title' => 'Evaluate Tile', 			'class' => 'GreenTileIcon CreateEvaluate sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/extra%20content.png',		array('width' => 100, 'height' => 100, 'title' => 'Extra Content Tile', 	'class' => 'GreenTileIcon CreateExtraContent sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/show%20loyalty.png', 		array('width' => 100, 'height' => 100, 'title' => 'Show Loyalty Tile', 		'class' => 'GreenTileIcon CreateLoyalty sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/see%20the%20process.png', array('width' => 100, 'height' => 100, 'title' => 'See the process Tile', 	'class' => 'GreenTileIcon CreateSeeProcess sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/Share.png', 				array('width' => 100, 'height' => 100, 'title' => 'Share Tile', 			'class' => 'GreenTileIcon CreateShare sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/talk%20to%20others.png', 	array('width' => 100, 'height' => 100, 'title' => 'Talk To Others Tile', 	'class' => 'GreenTileIcon CreateTalkToOthers sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/talk%20to%20you.png', 	array('width' => 100, 'height' => 100, 'title' => 'Talk To You Tile', 		'class' => 'GreenTileIcon CreateTalkToYou sticky'))?></li>
-					<li><?php echo $this->Html->image('AET/GreenCards/unique.png', 				array('width' => 100, 'height' => 100, 'title' => 'Unique Tile', 			'class' => 'GreenTileIcon CreateUnique sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/test.png', 				array('width' => 100, 'height' => 100, 'title' => 'Test Tile', 				'name' => 'Test-Tile', 				'class' => 'GreenTileIcon CreateBetaTest GreyOverlay sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/Codesign.png', 			array('width' => 100, 'height' => 100, 'title' => 'Co design Tile', 		'name' => 'Co-Design-Tile',			'class' => 'GreenTileIcon CreateCoDesign GreyOverlay sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/contribute.png', 			array('width' => 100, 'height' => 100, 'title' => 'Contribute Tile',		'name' => 'Contribute-Tile',		'class' => 'GreenTileIcon CreateContribute GreyOverlay sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/create.png', 				array('width' => 100, 'height' => 100, 'title' => 'Create Tile', 			'name' => 'Create-Tile',			'class' => 'GreenTileIcon CreateCreation sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/evaluate.png', 			array('width' => 100, 'height' => 100, 'title' => 'Evaluate Tile', 			'name' => 'Evaluate-Tile',			'class' => 'GreenTileIcon CreateEvaluate sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/extra%20content.png',		array('width' => 100, 'height' => 100, 'title' => 'Extra Content Tile', 	'name' => 'Extra-Content-Tile',		'class' => 'GreenTileIcon CreateExtraContent sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/show%20loyalty.png', 		array('width' => 100, 'height' => 100, 'title' => 'Show Loyalty Tile', 		'name' => 'Show-Loyalty-Tile',		'class' => 'GreenTileIcon CreateLoyalty sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/see%20the%20process.png', array('width' => 100, 'height' => 100, 'title' => 'See the process Tile', 	'name' => 'See-The-Process-Tile',	'class' => 'GreenTileIcon CreateSeeProcess sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/Share.png', 				array('width' => 100, 'height' => 100, 'title' => 'Share Tile', 			'name' => 'Share-Tile',				'class' => 'GreenTileIcon CreateShare sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/talk%20to%20others.png', 	array('width' => 100, 'height' => 100, 'title' => 'Talk To Others Tile', 	'name' => 'Talk-To-Others-Tile',	'class' => 'GreenTileIcon CreateTalkToOthers sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/talk%20to%20you.png', 	array('width' => 100, 'height' => 100, 'title' => 'Talk To You Tile', 		'name' => 'Talk-To-You-Tile',		'class' => 'GreenTileIcon CreateTalkToYou sticky'))?></li>
+					<li><?php echo $this->Html->image('AET/GreenCards/unique.png', 				array('width' => 100, 'height' => 100, 'title' => 'Unique Tile', 			'name' => 'Unique-Tile',			'class' => 'GreenTileIcon CreateUnique sticky'))?></li>
 				</ul>
 			</div>
 			<div>
