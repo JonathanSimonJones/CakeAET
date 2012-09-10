@@ -8,7 +8,8 @@ var currentGreenCardDescription;
 var greenCardDescriptionActive = false;
 var displayGreenCards = false;
 var feedback = false;
-
+var centerX = 0;
+var centerY = 0;
 
 var drpOptions = {	accept: ".sticky-clone",
 					drop: function(event, ui)
@@ -44,10 +45,13 @@ var drpOptions = {	accept: ".sticky-clone",
 
 $(document).ready(function()
 {
-	var numGreenCards = countNumberOfGreenCards();
+	numGreenCards = countNumberOfGreenCards();
+	
+	centerX = $(document).width() / 2;
+	centerY = $(document).height() / 2;
 
 	$("#AddGreenCard").click(function(){
-		CreateNewSticky('green', '', 350, 350);
+		CreateNewSticky('green', '', centerX, centerY);
 		return false;
 	});
 
@@ -225,11 +229,11 @@ function CreateNewSticky(colour, body, xPos, yPos)
 {
 	if(xPos < 0)
 	{
-		xPos = 350;
+		xPos = centerX;
 	}
 	if(yPos < 0)
 	{
-		yPos = 350;
+		yPos = centerY;
 	}
 	
 	$(document).ready(function()
@@ -241,7 +245,7 @@ function CreateNewSticky(colour, body, xPos, yPos)
 			$('#stickyList').append(htmlData);
 			// Fix below
 			$('.sticky-clone').draggable({stack: ".sticky-clone"}).last().attr({'id': 'userSticky' + stickyUniqueId++}).css({'position':'absolute', 'left': xPos, 'top': yPos});
-			createStickyInDatabase( stickyUniqueId, "green", "placeholder body" );
+			createStickyInDatabase( stickyUniqueId, "green", " " );
 		}
 		else if(colour === 'paleYellow')
 		{
@@ -258,11 +262,11 @@ function CreateNewStickyStartUp(colour, body, xPos, yPos)
 {
 	if(xPos < 0)
 	{
-		xPos = 350;
+		xPos = centerX;
 	}
 	if(yPos < 0)
 	{
-		yPos = 350;
+		yPos = centerY;
 	}
 	
 	$(document).ready(function()
@@ -333,6 +337,16 @@ function switchOverlayState(state)
 };
 
 function createStickyInDatabase(idOfSticky, colour, body ){
+	$.ajax({
+	type: "POST",
+	url: "/domainName/AudienceEngagements/add_sticky_to_database",
+	data: {'id': idOfSticky, 'colour': colour, 'body': body, 'brainstormId': 'firstTest' }
+	}).done(function(html){
+		$('#AjaxChecker').html('Added Sticky with ID ' + idOfSticky);
+	});
+}
+
+function updateStickyInDB(idOfSticky, colour, body ){
 	$.ajax({
 	type: "POST",
 	url: "/domainName/AudienceEngagements/add_sticky_to_database",
