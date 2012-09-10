@@ -19,4 +19,30 @@ class AudienceEngagementsController extends AppController
 		$this->set('stickies', $this->AudienceEngagement->find('all'));
 		$this->set('title_for_layout', 'Audience Engagement Tool');
 	}
+	
+	public function add_sticky_to_database()
+	{	
+		// Check to see if the form is empty
+		if (!empty($this->data))
+		{
+			// Check if the data has been saved successfully
+			if ($this->AudienceEngagement->save($this->data))
+			{
+				debug("Save was successful");
+			}
+		}
+	}
+	
+	public function update_sticky_position_in_db()
+	{
+		// Check to see if the form is empty
+		if (!empty($this->data))
+		{
+			// Check if the data has been saved successfully
+			if ($this->AudienceEngagement->save($this->data))
+			{
+				debug("Save was successful");
+			}
+		}
+	}
 }
