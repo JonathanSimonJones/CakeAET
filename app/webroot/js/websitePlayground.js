@@ -241,6 +241,39 @@ function CreateNewSticky(colour, body, xPos, yPos)
 			$('#stickyList').append(htmlData);
 			// Fix below
 			$('.sticky-clone').draggable({stack: ".sticky-clone"}).last().attr({'id': 'userSticky' + stickyUniqueId++}).css({'position':'absolute', 'left': xPos, 'top': yPos});
+			createStickyInDatabase( stickyUniqueId, "green", "placeholder body" );
+		}
+		else if(colour === 'paleYellow')
+		{
+			$('#StickyNoteIcon').clone().removeClass('box ui-draggable-dragging GreyOverlay RightBarIcon sticky').addClass('sticky-clone shadow').css({'position':'absolute', 'left': xPos, 'top': yPos}).appendTo('#stickyList').attr('id', 'userSticky' + stickyUniqueId++).find( "p" ).html( body );
+		}
+		else
+		{
+			alert('Shit J, create new sticky caused a boo boo, you gave the wrong colour to the function');
+		}
+	});
+};
+
+function CreateNewStickyStartUp(colour, body, xPos, yPos)
+{
+	if(xPos < 0)
+	{
+		xPos = 350;
+	}
+	if(yPos < 0)
+	{
+		yPos = 350;
+	}
+	
+	$(document).ready(function()
+	{
+		if(colour === 'green')
+		{
+			var htmlData='<div class="sticky sticky-clone ui-draggable user-created-sticky sticky_editable shadow" contenteditable="true"><p>' + body + '</p></div>'; 
+			//var htmlData='<div class="sticky sticky-clone ui-draggable user-created-sticky sticky_editable shadow" contenteditable="true"><textarea cols="20" rows="5">Text should appear here</textarea></div>'; 
+			$('#stickyList').append(htmlData);
+			// Fix below
+			$('.sticky-clone').draggable({stack: ".sticky-clone"}).last().attr({'id': 'userSticky' + stickyUniqueId++}).css({'position':'absolute', 'left': xPos, 'top': yPos});
 			//createStickyInDatabase( stickyUniqueId, "green", "placeholder body" );
 		}
 		else if(colour === 'paleYellow')
@@ -302,7 +335,7 @@ function switchOverlayState(state)
 function createStickyInDatabase(idOfSticky, colour, body ){
 	$.ajax({
 	type: "POST",
-	url: "AddStickyNoteToDatabase.php",
+	url: "/domainName/AudienceEngagements/add_sticky_to_database",
 	data: {'id': idOfSticky, 'colour': colour, 'body': body, 'brainstormId': 'firstTest' }
 	}).done(function(html){
 		$('#AjaxChecker').html('Added Sticky with ID ' + idOfSticky);
