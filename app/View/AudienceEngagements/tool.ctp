@@ -211,6 +211,6 @@
 
 <?php foreach ($stickies as $sticky): ?>
     <script>
-		CreateNewStickyStartUp('<?php echo $sticky['AudienceEngagement']['colour']; ?>','<?php echo $sticky['AudienceEngagement']['body']; ?>', <?php echo $sticky['AudienceEngagement']['xPos']; ?>, <?php echo $sticky['AudienceEngagement']['yPos']; ?> );
+		CreateNewStickyStartUp('<?php echo $sticky['AudienceEngagement']['colour']; ?>','<?php echo $sticky['AudienceEngagement']['body']; ?>', <?php echo $sticky['AudienceEngagement']['xPos']; ?>, <?php echo $sticky['AudienceEngagement']['yPos']; ?>, '<?php echo $sticky['AudienceEngagement']['imageName']; ?>');
 	</script>
 <?php endforeach; ?>

@@ -17,9 +17,16 @@
  */
 
 ?>
+
 <!DOCTYPE html>
 <html>
 	<head>
+	<?php
+	header('Expires: '.gmdate('D, j M Y H:i:s', time()-1800).' GMT');
+	header('Cache-Control: no-store, no-cache, must-revalidate');
+	header('Cache-Control: post-check=0, pre-check=0', FALSE);
+	header('Pragma: no-cache');
+	?>
 		<?php echo $this->Html->charset(); ?>
 		<title>
 			<?php echo $title_for_layout; ?>
@@ -40,7 +47,7 @@
 		<!--<div id="container">
 			<div id="content">
 
-				<?php /*echo $this->Session->flash();*/ ?>
+				<?php echo $this->Session->flash(); ?>
 
 				<?php /*echo $this->fetch('content');*/ ?>
 			</div>

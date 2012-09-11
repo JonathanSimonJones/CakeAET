@@ -2,7 +2,7 @@
 
 var numGreenCards;
 var height;
-var stickyUniqueId = 1;
+var stickyUniqueId = 0;
 var droppableUniueId = 1;
 var currentGreenCardDescription;
 var greenCardDescriptionActive = false;
@@ -10,6 +10,7 @@ var displayGreenCards = false;
 var feedback = false;
 var centerX = 0;
 var centerY = 0;
+var brainstormName = 'firstTest';
 
 var drpOptions = {	accept: ".sticky-clone",
 					drop: function(event, ui)
@@ -82,7 +83,7 @@ $(document).ready(function()
 			//console.log("Hello World!");
 			if( $(this).hasClass('GreenTileIcon') )
 			{
-				CreateNewSticky("greenWithImage", "", $(ui.helper).position().left, $(ui.helper).position().top , $(ui.helper).attr('name') );
+				CreateNewSticky("image", "", $(ui.helper).position().left, $(ui.helper).position().top , $(ui.helper).attr('name') );
 			}
 			else
 			{
@@ -90,18 +91,17 @@ $(document).ready(function()
 			}
 		}
 	});
-});
-
-$(function() {	
+	
 	$(".sticky-clone").live('mouseover', function() {
 		$(this).draggable({
 							containment: '#Surface',
 							stack: ".sticky-clone",
 							snap: ".Droppable",
 							snapMode: "inner",
-							stop: function()
+							stop: function(event, ui)
 							{	
 								$('li').filter('.removeDroppable').not('.hasSticky').remove();
+								updateStickyPositionInDB($(ui.helper).attr("id"), brainstormName, $(ui.helper).position().left, $(ui.helper).position().top );
 							}
 							}).bind('click', function()
 							{
@@ -109,6 +109,10 @@ $(function() {
 							}
 							);
 	});
+});
+
+$(function() {	
+
 
 	// Used to animate the header
 	$('#HeaderSlidingBar #HeaderClickableBar').toggle(function(){
@@ -159,7 +163,7 @@ $("RandomQuestion").css({'visibility': 'visible'});
 			
 			switch(currentGreenCardDescription)
 			{
-				case "Test-Tile"	: $('#TestDesc').css({'display': 'block'});
+				case "Test Tile"	: $('#TestDesc').css({'display': 'block'});
 										break;
 				case "Co design Tile": $('#CoDesignDesc').css({'display': 'block'});
 										break;
@@ -173,13 +177,13 @@ $("RandomQuestion").css({'visibility': 'visible'});
 										break;
 				case "Show Loyalty Tile": $('#ShowLoyaltyDesc').css({'display': 'block'});
 										break;
-				case "See process Tile": $('#SeeTheProcessDesc').css({'display': 'block'});
+				case "See the process Tile": $('#SeeTheProcessDesc').css({'display': 'block'});
 										break;
 				case "Share Tile": $('#ShareDesc').css({'display': 'block'});
 										break;
-				case "Talk to others Tile": $('#TalkToOthersDesc').css({'display': 'block'});
+				case "Talk To Others Tile": $('#TalkToOthersDesc').css({'display': 'block'});
 										break;
-				case "Talk to you Tile": $('#TalkToYouDesc').css({'display': 'block'});
+				case "Talk To You Tile": $('#TalkToYouDesc').css({'display': 'block'});
 										break;
 				case "Unique Tile": $('#UniqueDesc').css({'display': 'block'});
 										break;
@@ -255,19 +259,22 @@ function CreateNewSticky(colour, body, xPos, yPos, title)
 			//var htmlData='<div class="sticky sticky-clone ui-draggable user-created-sticky sticky_editable shadow" contenteditable="true"><textarea cols="20" rows="5">Text should appear here</textarea></div>'; 
 			$('#stickyList').append(htmlData);
 			// Fix below
-			$('.sticky-clone').draggable({stack: ".sticky-clone"}).last().attr({'id': stickyUniqueId++}).css({'position':'absolute', 'left': xPos, 'top': yPos});
-			createStickyInDatabase( stickyUniqueId, "green", "", "firstTest", centerX, centerY);
+			$('.sticky-clone').draggable({stack: ".sticky-clone"}).last().attr({'id': stickyUniqueId}).css({'position':'absolute', 'left': xPos, 'top': yPos});
+			createStickyInDatabase( stickyUniqueId, "green", "", brainstormName, centerX, centerY);
+			stickyUniqueId++;
 		}
 		else if(colour === 'paleYellow')
 		{
-			$('#StickyNoteIcon').clone().removeClass('box ui-draggable-dragging GreyOverlay RightBarIcon sticky').addClass('sticky-clone shadow').css({'position':'absolute', 'left': xPos, 'top': yPos}).appendTo('#stickyList').attr('id', stickyUniqueId++).find( "p" ).html( body );
-			createStickyInDatabase( stickyUniqueId, "paleYellow", "", "firstTest", xPos, yPos);
+			$('#StickyNoteIcon').clone().removeClass('box ui-draggable-dragging GreyOverlay RightBarIcon sticky').addClass('sticky-clone shadow').css({'position':'absolute', 'left': xPos, 'top': yPos}).appendTo('#stickyList').attr('id', stickyUniqueId).find( "p" ).html( body );
+			createStickyInDatabase( stickyUniqueId, "paleYellow", "", brainstormName, xPos, yPos);
+			stickyUniqueId++;
 		}
-		else if(colour === 'greenWithImage')
+		else if(colour === 'image')
 		{
 			var greenCardSelector = 'img[name=' + title + ']';
-			$(greenCardSelector).first().clone().removeClass('box ui-draggable-dragging GreyOverlay RightBarIcon sticky').addClass('sticky-clone shadow').css({'position':'absolute', 'left': xPos, 'top': yPos}).appendTo('#stickyList').attr('id', stickyUniqueId++).find( "p" ).html( body );
-			//createStickyInDatabase( stickyUniqueId, "green", "", "firstTest", centerX, centerY);
+			$(greenCardSelector).first().clone().removeClass('box ui-draggable-dragging GreyOverlay RightBarIcon sticky').addClass('sticky-clone shadow').css({'position':'absolute', 'left': xPos, 'top': yPos}).appendTo('#stickyList').attr('id', stickyUniqueId).find( "p" ).html( body );
+			createStickyInDatabase( stickyUniqueId, "image", "", brainstormName, xPos, yPos, title);
+			stickyUniqueId++;
 		}
 		else
 		{
@@ -276,7 +283,7 @@ function CreateNewSticky(colour, body, xPos, yPos, title)
 	});
 };
 
-function CreateNewStickyStartUp(colour, body, xPos, yPos)
+function CreateNewStickyStartUp(colour, body, xPos, yPos, imageName)
 {
 	if(xPos < 0)
 	{
@@ -295,11 +302,19 @@ function CreateNewStickyStartUp(colour, body, xPos, yPos)
 			//var htmlData='<div class="sticky sticky-clone ui-draggable user-created-sticky sticky_editable shadow" contenteditable="true"><textarea cols="20" rows="5">Text should appear here</textarea></div>'; 
 			$('#stickyList').append(htmlData);
 			// Fix below
-			$('.sticky-clone').draggable({stack: ".sticky-clone"}).last().attr({'id': stickyUniqueId++}).css({'position':'absolute', 'left': xPos, 'top': yPos});
+			$('.sticky-clone').draggable({stack: ".sticky-clone"}).last().attr({'id': stickyUniqueId}).css({'position':'absolute', 'left': xPos, 'top': yPos});
+			stickyUniqueId++;
 		}
 		else if(colour === 'paleYellow')
 		{
-			$('#StickyNoteIcon').clone().removeClass('box ui-draggable-dragging GreyOverlay RightBarIcon sticky').addClass('sticky-clone shadow').css({'position':'absolute', 'left': xPos, 'top': yPos}).appendTo('#stickyList').attr('id', stickyUniqueId++).find( "p" ).html( body );
+			$('#StickyNoteIcon').clone().removeClass('box ui-draggable-dragging GreyOverlay RightBarIcon sticky').addClass('sticky-clone shadow').css({'position':'absolute', 'left': xPos, 'top': yPos}).appendTo('#stickyList').attr('id', stickyUniqueId).find( "p" ).html( body );
+			stickyUniqueId++
+		}
+		else if(colour === 'image')
+		{
+			var greenCardSelector = 'img[name=' + imageName + ']';
+			$(greenCardSelector).first().clone().removeClass('box ui-draggable-dragging GreyOverlay RightBarIcon sticky').addClass('sticky-clone shadow').css({'position':'absolute', 'left': xPos, 'top': yPos}).appendTo('#stickyList').attr('id', stickyUniqueId).find( "p" ).html( body );
+			stickyUniqueId++;
 		}
 		else
 		{
@@ -353,11 +368,11 @@ function switchOverlayState(state)
 	};
 };
 
-function createStickyInDatabase(idOfSticky, colour, body, brainstormName, xPos, yPos){
+function createStickyInDatabase(idOfSticky, colour, body, brainstormName, xPos, yPos, imageName){
 	$.ajax({
 	type: "POST",
 	url: "/domainName/AudienceEngagements/add_sticky_to_database",
-	data: {'id': idOfSticky, 'colour': colour, 'body': body, 'brainstormId': brainstormName, 'xPos' : xPos, 'yPos' : yPos }
+	data: {'stickyId': idOfSticky, 'colour': colour, 'body': body, 'brainstormId': brainstormName, 'xPos' : xPos, 'yPos' : yPos, 'imageName' : imageName }
 	}).done(function(html){
 		$('#AjaxChecker').html('Added Sticky with ID ' + idOfSticky);
 	});
@@ -366,8 +381,8 @@ function createStickyInDatabase(idOfSticky, colour, body, brainstormName, xPos, 
 function updateStickyPositionInDB(idOfSticky, brainstormName, xPos, yPos ){
 	$.ajax({
 	type: "POST",
-	url: "/domainName/AudienceEngagements/update_sticky_position_in_db",
-	data: {'id': idOfSticky, 'brainstormId': brainstormName, 'xPos' : xPos, 'yPos' : yPos }
+	url: "/domainName/AudienceEngagements/update_sticky_postition_in_db",
+	data: {'stickyId': idOfSticky, 'brainstormId': brainstormName, 'xPos' : xPos, 'yPos' : yPos }
 	}).done(function(html){
 		$('#AjaxChecker').html('Updated sticky with ID ' + idOfSticky);
 	});
