@@ -22,6 +22,7 @@ var drpOptions = {	accept: ".sticky-clone",
 							//$(this).parent().clone(true).appendTo('#DroppableList');
 							//console.log(ui.draggable.attr('id'));
 							$(ui.draggable).removeClass('shadow').addClass('initativeItem').insertBefore(this);
+							updateStickyIncentiveStatusInDB($(ui.draggable).attr("id"), brainstormName, 1, 1);
 							$(this).parent().addClass('hasSticky');
 						}
 						else
@@ -31,14 +32,20 @@ var drpOptions = {	accept: ".sticky-clone",
 					},
 					out: function(event, ui)
 					{
+						// If the draggable is already part of an initive
 						if($(ui.draggable).hasClass('initativeItem'))
 						{
+							// Add a shadow to it again
 							$(ui.draggable).addClass('shadow').removeClass('initativeItem').appendTo('#stickyList');
-							
+							updateStickyIncentiveStatusInDB($(ui.draggable).attr("id"), brainstormName, 0, 1);
+							// If more than one droppable exists 
 							if( $(".Droppable").length > 1)
 							{
+								// Add class removeDroppable to droppable that was most recently add
 								$(this).parent().addClass("removeDroppable");
 							}
+							
+							// Remove the has class sticky
 							$(this).parent().removeClass('hasSticky');
 						}
 					}
@@ -106,8 +113,16 @@ $(document).ready(function()
 							}).bind('click', function()
 							{
 								$(this).focus();
-							}
-							);
+							}).focusout(function()
+							{
+								updateStickyBodyInDB($(this).attr("id"), brainstormName, $(this).text());
+							})
+							;
+	});
+	
+	$('#update').click(function()
+	{
+		$(this).html('You have clicked update');
 	});
 });
 
@@ -283,7 +298,7 @@ function CreateNewSticky(colour, body, xPos, yPos, title)
 	});
 };
 
-function CreateNewStickyStartUp(colour, body, xPos, yPos, imageName)
+function CreateNewStickyStartUp(colour, body, partOfIncentive, xPos, yPos, imageName)
 {
 	if(xPos < 0)
 	{
@@ -296,6 +311,13 @@ function CreateNewStickyStartUp(colour, body, xPos, yPos, imageName)
 	
 	$(document).ready(function()
 	{
+		/*
+		if(partOfIncentive === 1)
+		{
+			$(".Droppable").parent().clone().appendTo('#DroppableList').children().droppable(drpOptions);
+			$(ui.draggable).removeClass('shadow').addClass('initativeItem').insertBefore(".Droppable").first();
+		}
+		*/
 		if(colour === 'green')
 		{
 			var htmlData='<div class="sticky sticky-clone ui-draggable user-created-sticky sticky_editable shadow" contenteditable="true"><p>' + body + '</p></div>'; 
@@ -326,9 +348,18 @@ function CreateNewStickyStartUp(colour, body, xPos, yPos, imageName)
 function countNumberOfGreenCards(){
 	var ul = document.getElementById('GreenCardList');
 	var i=0, c =0;
-	while(ul.getElementsByTagName('li')[i++])
+	
+	if(ul != null)
 	{
-		c++;
+		var foo = 0;
+		while(ul.getElementsByTagName('li')[i++])
+		{
+			c++;
+		}
+	}
+	else
+	{
+		c = 0;
 	}
 	return c;
 };
@@ -376,14 +407,34 @@ function createStickyInDatabase(idOfSticky, colour, body, brainstormName, xPos, 
 	}).done(function(html){
 		$('#AjaxChecker').html('Added Sticky with ID ' + idOfSticky);
 	});
-}
+};
 
 function updateStickyPositionInDB(idOfSticky, brainstormName, xPos, yPos ){
 	$.ajax({
 	type: "POST",
 	url: "/domainName/AudienceEngagements/update_sticky_postition_in_db",
-	data: {'stickyId': idOfSticky, 'brainstormId': brainstormName, 'xPos' : xPos, 'yPos' : yPos }
+	data: {'test1': idOfSticky, 'brainstormId': brainstormName, 'xPos' : xPos, 'yPos' : yPos },
+	success: function()
+	{
+		//window.location.href="http://localhost/domainName/AudienceEngagements/tool";
+	}
 	}).done(function(html){
 		$('#AjaxChecker').html('Updated sticky with ID ' + idOfSticky);
 	});
-}
+};
+
+function updateStickyBodyInDB(idOfSticky, brainstormName, body){
+	$.ajax({
+	type: "POST",
+	url: "/domainName/AudienceEngagements/update_body_of_sticky_in_db",
+	data: {'idOfSticky': idOfSticky, 'brainstormId': brainstormName, 'body' : body}
+	});
+};
+
+function updateStickyIncentiveStatusInDB(idOfSticky, brainstormName, partOfIncentive, idOfIncentive){
+	$.ajax({
+	type: "POST",
+	url: "/domainName/AudienceEngagements/update_sticky_incentive_status",
+	data: {'idOfSticky': idOfSticky, 'brainstormId': brainstormName, 'partOfIncentive': partOfIncentive, 'idOfIncentive' : idOfIncentive }
+	});
+};

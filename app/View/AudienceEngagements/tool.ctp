@@ -26,6 +26,7 @@
 	<section id="StickySpace">
 		<div style="position: absolute; top: 100px;">
 			<?php echo $this->Session->flash(); ?>
+			<p id="update">Click This Text<p>
 			<?php echo $this->Html->link('This one is 4', array('controller' => 'audienceEngagements', 'action' => 'tool', '4')); ?>
 			<?php echo $this->Html->link('This one is 6', array('controller' => 'audienceEngagements', 'action' => 'tool', '6')); ?>
 			<?php echo $this->Html->link('This is plain tool', array('controller' => 'audienceEngagements', 'action' => 'tool')); ?>
@@ -209,8 +210,31 @@
 	</div>
 </div><!-- End overlay-->
 
+<?php
+function foo($bar)
+{
+	if($bar == NULL)
+	{
+		return 0;
+	}
+	else 
+	{
+		return $bar;
+	}
+}
+?>
 <?php foreach ($stickies as $sticky): ?>
+	<?php if($sticky['AudienceEngagement']['partOfIncentive'] == 0): ?>
     <script>
-		CreateNewStickyStartUp('<?php echo $sticky['AudienceEngagement']['colour']; ?>','<?php echo $sticky['AudienceEngagement']['body']; ?>', <?php echo $sticky['AudienceEngagement']['xPos']; ?>, <?php echo $sticky['AudienceEngagement']['yPos']; ?>, '<?php echo $sticky['AudienceEngagement']['imageName']; ?>');
+		CreateNewStickyStartUp(	'<?php echo $sticky['AudienceEngagement']['colour']; ?>',
+								'<?php echo $sticky['AudienceEngagement']['body']; ?>', 
+								<?php echo foo($sticky['AudienceEngagement']['partOfIncentive']); ?>, 
+								<?php echo $sticky['AudienceEngagement']['xPos']; ?>, 
+								<?php echo $sticky['AudienceEngagement']['yPos']; ?>, 
+								'<?php echo $sticky['AudienceEngagement']['imageName']; ?>');
 	</script>
+	<?php endif; ?>
 <?php endforeach; ?>
+
+
+
