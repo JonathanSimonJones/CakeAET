@@ -1,0 +1,64 @@
+/*
+	Right bar styles
+*/
+
+.RightBarIcon{
+	margin: 20px;
+	float: right;
+}
+
+#RightHandBar{
+	display: block;
+	/*position: relative;
+	float: right;
+	top: 100px;*/
+}
+#StickyNoteIcon{
+	position: relative;
+	top: 200px;
+	float: right;
+	width: 100px;
+	height: 100px;
+	background: #F9F8C9;
+}
+#challengeCardArea{
+	position: relative;
+	top: 335px;
+	right: -120px;
+	float: right;
+	display: block;
+	width: 100px;
+}
+#ChallengeCard{
+	/*
+	position: relative;
+	top: 365px;
+	right: -120px;
+	float: right;
+	*/
+	margin-top: 0px;
+	width: 100px;
+	height: 100px;
+	background-color: yellow;
+	border-bottom-style: solid;
+	border-bottom-width: 1.5px;
+	border-bottom-color: black;
+}
+#SeeAllButton{
+	margin-top: -5px;
+	position: relative;
+	width: auto;
+	background-color: silver;
+	border-top: 1px;
+	text-align: center;
+}
+#NextStep{
+	position: relative;
+	float: right;
+	top: 500px;
+	right: -220px;
+}
+
+/*
+	End of right bar styles
+*/

@@ -235,9 +235,40 @@ $("RandomQuestion").css({'visibility': 'visible'});
 		switchOverlayState('feedback');
 		$("#OverLay").fadeIn();
 	});
+	
+	$('#newInitiative').click(function(){
+		newInitiative();
+	});
+	
+	$('.footerTab').click(function()
+	{	
+		footerTabClick(this);
+		/*
+		$('.footerTab').removeClass('active');
+		$(this).addClass('active');
+		
+		var number = $(this).attr('id');
+		number = number.match(/\d+/g);
+		var contentID = "#content_" + number;
+		$('.footerTabContent').css("display", "none");
+		$(contentID).css("display","inline");
+		*/
+	});
 });
 
+function footerTabClick(tab)
+{
+	$('.footerTab').removeClass('active');
+	$(tab).addClass('active');
+	
+	var number = $(tab).attr('id');
+	number = number.match(/\d+/g);
+	var contentID = "#content_" + number;
+	$('.footerTabContent').css("display", "none");
+	$(contentID).css("display","inline");
+};
 
+/*
 
 function tabSwitch(new_tab, new_content) {
 	document.getElementById('content_1').style.display = 'none';
@@ -250,7 +281,7 @@ function tabSwitch(new_tab, new_content) {
 	document.getElementById('tab_2').className = '';
 	document.getElementById('tab_3').className = '';
 	document.getElementById(new_tab).className = 'active';
-};
+};*/
 
 function CreateNewSticky(colour, body, xPos, yPos, title)
 {
@@ -320,11 +351,21 @@ function CreateNewStickyStartUp(colour, body, partOfIncentive, xPos, yPos, image
 		*/
 		if(colour === 'green')
 		{
-			var htmlData='<div class="sticky sticky-clone ui-draggable user-created-sticky sticky_editable shadow" contenteditable="true"><p>' + body + '</p></div>'; 
+			var htmlData='<div class="sticky-clone ui-draggable user-created-sticky sticky_editable shadow" contenteditable="true"><p>' + body + '</p></div>'; 
 			//var htmlData='<div class="sticky sticky-clone ui-draggable user-created-sticky sticky_editable shadow" contenteditable="true"><textarea cols="20" rows="5">Text should appear here</textarea></div>'; 
 			$('#stickyList').append(htmlData);
 			// Fix below
 			$('.sticky-clone').draggable({stack: ".sticky-clone"}).last().attr({'id': stickyUniqueId}).css({'position':'absolute', 'left': xPos, 'top': yPos});
+			
+			if(partOfIncentive === 1)
+			{
+				var $stickyNum = "#"+stickyUniqueId;
+				//alert($stickyNum);
+				
+				$(".Droppable").parent().clone().appendTo('#DroppableList').children().droppable(drpOptions);
+				$($stickyNum).removeClass('shadow').addClass('initativeItem').insertBefore(".Droppable").first();
+				$(".Droppable").parent().last().addClass('hasSticky');
+			}
 			stickyUniqueId++;
 		}
 		else if(colour === 'paleYellow')
@@ -400,6 +441,7 @@ function switchOverlayState(state)
 };
 
 function createStickyInDatabase(idOfSticky, colour, body, brainstormName, xPos, yPos, imageName){
+	/*
 	$.ajax({
 	type: "POST",
 	url: "/domainName/AudienceEngagements/add_sticky_to_database",
@@ -407,9 +449,11 @@ function createStickyInDatabase(idOfSticky, colour, body, brainstormName, xPos, 
 	}).done(function(html){
 		$('#AjaxChecker').html('Added Sticky with ID ' + idOfSticky);
 	});
+	*/
 };
 
 function updateStickyPositionInDB(idOfSticky, brainstormName, xPos, yPos ){
+	/*
 	$.ajax({
 	type: "POST",
 	url: "/domainName/AudienceEngagements/update_sticky_postition_in_db",
@@ -421,20 +465,44 @@ function updateStickyPositionInDB(idOfSticky, brainstormName, xPos, yPos ){
 	}).done(function(html){
 		$('#AjaxChecker').html('Updated sticky with ID ' + idOfSticky);
 	});
+	*/
 };
 
 function updateStickyBodyInDB(idOfSticky, brainstormName, body){
+	/*
 	$.ajax({
 	type: "POST",
 	url: "/domainName/AudienceEngagements/update_body_of_sticky_in_db",
 	data: {'idOfSticky': idOfSticky, 'brainstormId': brainstormName, 'body' : body}
-	});
+	});*/
 };
 
 function updateStickyIncentiveStatusInDB(idOfSticky, brainstormName, partOfIncentive, idOfIncentive){
+	/*
 	$.ajax({
 	type: "POST",
 	url: "/domainName/AudienceEngagements/update_sticky_incentive_status",
 	data: {'idOfSticky': idOfSticky, 'brainstormId': brainstormName, 'partOfIncentive': partOfIncentive, 'idOfIncentive' : idOfIncentive }
 	});
+	*/
 };
+
+function newInitiative()
+{
+	var tabNumber = $('.footerTab').last().attr("id");
+	tabNumber = tabNumber.match(/\d+/g);
+	
+	var newNumber = parseFloat(tabNumber);
+	newNumber += 1;
+	
+	var newTabHTML = ' <li> <div id="tab_' + newNumber + '" class="footerTab">Initative ' + newNumber + '</div></li>';
+	$('.tabs').children().last().before(newTabHTML);
+	
+	$('.footerTab').click(function()
+	{
+		footerTabClick(this);
+	});
+	
+	var newTabContentHTML = '<div id="initative_content' + newNumber + '" class="footerTabContent"> <ul id="DroppableList"> <li> <div class="Droppable">Droppable area</div> </li> </ul> </div>';
+	$('.footerTabContent').last().after(newTabContentHTML);
+}

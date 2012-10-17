@@ -1,0 +1,14 @@
+/*
+	Left bar styles 
+*/
+
+#leftBar{
+	float: left;
+	width: 150px;
+	height: 500px;
+	background-color: blue;
+}
+
+/*
+	End of Left bar styles 
+*/

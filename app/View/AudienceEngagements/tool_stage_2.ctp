@@ -13,7 +13,7 @@
 		</div>
 		<div id="HeaderClickableBar">
 			<div id="HeaderTitle">
-				<h1><b>BRAINSTORMING SPACE</b><small> How can you involve your <i>potential</i> audiences?</small></h1>
+				<h1><b>PLANNING SPACE</b><small> Developing those ideas from the users perspective</small></h1>
 			</div>
 			<div id="HeaderTab">
 				<?php echo $this->Html->image('AET/Header/topBarArrowDown.png', array('width' => 35, 'height' => 25, 'id' => 'MovingTargetsTab', 'alt' => ''))?>
@@ -26,7 +26,35 @@
 		<div style="position: absolute; top: 100px;">
 			<?php echo $this->Session->flash(); ?>
 		</div>
+		<div id="leftBar">
+		</div>
 	</body>
+	
+	<footer id="BottomBarTest" class="tabbed_box"> <!--id="tabbed_box_1"-->
+		<div class="tabbed_area2" style="display:block">  
+		  
+			<ul class="tabs">
+				<li>
+					<div id="tab_1" class="active footerTab">
+						Initative 1
+					</div>
+				</li>
+				<li>
+					<div id="newInitiative">
+						<b>+</b>
+					</div>
+				</li>
+			</ul>
+			
+			<div id="initative_content_1" class="footerTabContent">
+				<ul id="DroppableList">
+					<li>
+						<div class="Droppable">Droppable area</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</footer>
 </div> <!-- End Surface -->
 
 <div id="OverLay">

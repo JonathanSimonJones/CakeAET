@@ -1,0 +1,26 @@
+/* 
+	Feedback Form Styles
+*/
+
+#FeedBackForm{
+	/*margin-top: 30px;*/
+}
+#FeedBackForm ul{
+	list-style: none;
+}
+#FeedBackForm ul li{
+	display: inline;
+}
+.FormListElement{
+	display: inline-block;
+	padding: 5px;
+}
+#BetaLogoForm{
+	width: 30px;
+	height: 60px;
+	margin-left: 10px;
+}
+
+/*
+	End of Feedback Styles
+*/

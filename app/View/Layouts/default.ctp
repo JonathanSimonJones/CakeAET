@@ -34,8 +34,8 @@
 		<?php
 			echo $this->Html->meta('icon');
 
-			echo $this->Html->css('websitePlayground.css');
-			echo $this->Html->css('ui-lightness/jquery-ui-1.8.21.custom.css');
+			//echo $this->Html->css('websitePlayground.css');
+			//echo $this->Html->css('ui-lightness/jquery-ui-1.8.21.custom.css');
 			//echo $this->Html->css('cake.generic');
 
 			echo $this->fetch('meta');

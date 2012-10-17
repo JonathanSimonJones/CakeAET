@@ -1,0 +1,46 @@
+/*
+	Sticky styles
+*/
+
+.sticky{ 
+}
+.greenSticky{
+	background-color: green;
+}
+.sticky p{
+	text-align: center;
+	font-size: medium;
+}
+#stickyList{
+}
+.cross{
+	background-image:url(../img/AET/Icons/Cross.png);
+	width: 17px;
+	height: 16px;
+	margin-top: 5px;
+	float:right;
+}
+.shadow {
+	-moz-box-shadow:    4px 5px 8px 1px #666;
+	-webkit-box-shadow: 4px 5px 8px 1px #666;
+	box-shadow:         4px 5px 8px 1px #666;
+}
+.sticky-clone{
+	width: 100px;
+	height: 100px;
+}
+.sticky_editable
+{
+	width: 100px;
+	height: 100px;
+	background: #F9F8C9;
+}
+ .user-created-sticky{
+	/*position:relative; */
+	background: #339900; 
+	/*top: 500px;
+	left: 500px;*/
+}
+/*
+	End of sticky styles
+*/

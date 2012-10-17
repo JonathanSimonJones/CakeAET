@@ -1,85 +1,125 @@
+<!--tool.ctp -->
 <?php
-	
+	// Includes 
 	echo $this->Html->script('jquery', FALSE);
 	echo $this->Html->script('jquery-ui', FALSE);
 	echo $this->Html->script('websitePlayground', FALSE);
+	echo $this->Html->css('websitePlayground.css', FALSE);
+	echo $this->Html->css('Header.css', null, array('inline' => false));
+	echo $this->Html->css('RightBar.css', null, array('inline' => false));
+	echo $this->Html->css('ui-lightness/jquery-ui-1.8.21.custom.css', null, array('inline' => false));
+	echo $this->Html->css('OverlayWindow.css', null, array('inline' => false));
+	echo $this->Html->css('BottomBar.css', null, array('inline' => false));
+	echo $this->Html->css('FeedbackForm.css', null, array('inline' => false));
+	echo $this->Html->css('Sticky.css', null, array('inline' => false));
 ?>
 
+<!-- Whole screen -->
 <div id="Surface">
+	
+	<!-- Beta Logo -->
 	<?php echo $this->Html->image('AET/Header/beta.png', array('width' => 100, 'height' => 200, 'title' => 'Beta', 'id' => 'BetaLogo'))?>
+	
+	<!-- The drop down header bar -->
 	<header id="HeaderSlidingBar">
+		
 		<div id="HeaderContent">
+			
+			<!-- Moving targets logo -->
 			<?php echo $this->Html->image('AET/Header/MovingTargetsLogo.jpg', array('width' => 300, 'height' => 150, 'title' => 'Moving Targets Logo'))?>
+			
 		</div>
+		
+		<!-- Title bar -->
 		<div id="HeaderClickableBar">
+		
+			<!-- The title -->
 			<div id="HeaderTitle">
 				<h1><b>BRAINSTORMING SPACE</b><small> How can you involve your <i>potential</i> audiences?</small></h1>
 			</div>
+			
+			<!-- The arrow tab -->
 			<div id="HeaderTab">
 				<?php echo $this->Html->image('AET/Header/topBarArrowDown.png', array('width' => 35, 'height' => 25, 'id' => 'MovingTargetsTab', 'alt' => ''))?>
 			</div>
+			
 		</div>
 	</header>
 	
-	<!--<button type="button" style="position: absolute; top: 100px;"><?php //echo $this->Html->link('Click here to show flash message', array('action' => 'tool', 4)); ?></button> -->
-	
+	<!-- The area where the stickies can be placed -->
 	<section id="StickySpace">
+	
+		<!-- Display any flash messages 
 		<div style="position: absolute; top: 100px;">
-			<?php echo $this->Session->flash(); ?>
+			<?php //echo $this->Session->flash(); ?>
 			<p id="update">Click This Text<p>
-			<?php echo $this->Html->link('This one is 4', array('controller' => 'audienceEngagements', 'action' => 'tool', '4')); ?>
-			<?php echo $this->Html->link('This one is 6', array('controller' => 'audienceEngagements', 'action' => 'tool', '6')); ?>
-			<?php echo $this->Html->link('This is plain tool', array('controller' => 'audienceEngagements', 'action' => 'tool')); ?>
+			<?php //echo $this->Html->link('This one is 4', array('controller' => 'audienceEngagements', 'action' => 'tool', '4')); ?>
+			<?php //echo $this->Html->link('This one is 6', array('controller' => 'audienceEngagements', 'action' => 'tool', '6')); ?>
+			<?php //echo $this->Html->link('This is plain tool', array('controller' => 'audienceEngagements', 'action' => 'tool')); ?>
 			<p id="AjaxChecker"></p>
-		</div>
+		</div>-->
+		
+		<!-- The right hand bar -->
 		<ul id="RightHandBar">
+			
+			<!-- Sticky note icon -->
 			<li>
 				<div id="StickyNoteIcon" class="sticky sticky_editable RightBarIcon">
 					<p>Sticky Note</p>
 				</div>
 			</li>
 		
-			<li>
-				<div id="challengeCardArea">
-					<!--<img src='Icons2/RightBar/Random%20Challenge.png' title='Random Challenge' width="100" height="100" id='ChallengeCard'>-->
-					<?php echo $this->Html->image('AET/RightBar/Random%20Challenge.png', array('width' => 100, 'height' => 100, 'title' => 'Random Challenge', 'id' => 'ChallengeCard'))?>
-					<p id="SeeAllButton">See all</p>
-				</div>
+			<!-- Random Challenge card -->
+			<li id="challengeCardArea">
+				<?php echo $this->Html->image('AET/RightBar/Random%20Challenge.png', array('width' => 100, 'height' => 100, 'title' => 'Random Challenge', 'id' => 'ChallengeCard'))?>
+				<p id="SeeAllButton">See all</p>
 			</li>
 			
+			<!-- Next step button -->
 			<li>
-				<!--<a href="#" id='NextStep'><img src='Icons2/RightBar/NextStep.png' title='Next Step Button' width="100" height="100"></a>-->
 				<a href="#" id='NextStep'><?php echo $this->Html->image('AET/RightBar/NextStep.png', array('width' => 100, 'height' => 100, 'title' => 'Next Step Button'))?></a>
 			</li>
 		</ul>
 		
+		<!-- Where the sticky notes get placed when they are created -->
 		<div id="stickyList"> </div>
-	</section>
+	</section>	<!-- End of sticky space -->
 	
+	<!-- Footer -->
 	<footer id="tabbed_box_1" class="tabbed_box">
+	
+		<!-- The whole tabbed area -->
 		<div class="tabbed_area">  
 		  
-			<ul class="tabs">  
+			<!-- The top tabs -->
+			<ul class="tabs">
+
+				<!-- During Concept & Implementation tab -->
 				<li>
-					<a href="javascript:tabSwitch('tab_1', 'content_1');" id="tab_1" class="active footerTab">
+					<div id="tab_1" class="active footerTab">
 						<?php echo $this->Html->image('AET/BottomBarIcons/ConceptAndImplem.png', array('width' => 20, 'height' => 20, 'title' => 'Concept & Design', 'class' => 'bottomBarIcon'))?>
 						During Concept & Implementation
-					</a>
-				</li>  
+					</div>
+				</li>
+				
+				<!-- During Marketing & Promotion tab -->
 				<li>
-					<a href="javascript:tabSwitch('tab_2', 'content_2');" id="tab_2" class="footerTab">
+					<div id="tab_2" class="footerTab">
 						<?php echo $this->Html->image('AET/BottomBarIcons/promotion.png', array('width' => 20, 'height' => 20, 'title' => 'Promotion', 'class' => 'bottomBarIcon'))?>
 						During Marketing & Promotion
-					</a>
-				</li>  
+					</div>
+				</li>
+				
+				<!-- Sustain the Engagement tab-->
 				<li>
-					<a href="javascript:tabSwitch('tab_3', 'content_3');" id="tab_3" class="footerTab">
+					<div id="tab_3" class="footerTab">
 						<?php echo $this->Html->image('AET/BottomBarIcons/SustainEngagement.png', array('width' => 20, 'height' => 20, 'title' => 'Sustain The Engagement', 'class' => 'bottomBarIcon'))?>
 						Sustain the engagement
-					</a>
+					</div>
 				</li>
 			</ul>
-			  
+			
+			<!-- The content of During Concept & Implementation -->
 			<div id="content_1" class="footerTabContent">
 				<ul>
 					<li><?php echo $this->Html->image('AET/GreenCards/test.png', 				array('width' => 100, 'height' => 100, 'title' => 'Test Tile', 				'name' => 'Test-Tile', 				'class' => 'GreenTileIcon CreateBetaTest sticky' ))?></li>
@@ -95,7 +135,9 @@
 					<li><?php echo $this->Html->image('AET/GreenCards/talk%20to%20you.png', 	array('width' => 100, 'height' => 100, 'title' => 'Talk To You Tile', 		'name' => 'Talk-To-You-Tile',		'class' => 'GreenTileIcon CreateTalkToYou sticky'))?></li>
 					<li><?php echo $this->Html->image('AET/GreenCards/unique.png', 				array('width' => 100, 'height' => 100, 'title' => 'Unique Tile', 			'name' => 'Unique-Tile',			'class' => 'GreenTileIcon CreateUnique GreyOverlay sticky'))?></li>
 				</ul>
-			</div>  
+			</div>
+			
+			<!-- The content of During Marketing & Promotion -->
 			<div id="content_2" class="footerTabContent">
 				<ul>
 					<li><?php echo $this->Html->image('AET/GreenCards/test.png', 				array('width' => 100, 'height' => 100, 'title' => 'Test Tile', 				'name' => 'Test-Tile', 				'class' => 'GreenTileIcon CreateBetaTest GreyOverlay sticky'))?></li>
@@ -111,7 +153,9 @@
 					<li><?php echo $this->Html->image('AET/GreenCards/talk%20to%20you.png', 	array('width' => 100, 'height' => 100, 'title' => 'Talk To You Tile', 		'name' => 'Talk-To-You-Tile',		'class' => 'GreenTileIcon CreateTalkToYou sticky'))?></li>
 					<li><?php echo $this->Html->image('AET/GreenCards/unique.png', 				array('width' => 100, 'height' => 100, 'title' => 'Unique Tile', 			'name' => 'Unique-Tile',			'class' => 'GreenTileIcon CreateUnique sticky'))?></li>
 				</ul>
-			</div>  
+			</div>
+			
+			<!-- The content of Sustain the Engagement-->
 			<div id="content_3" class="footerTabContent">
 				<ul>
 					<li><?php echo $this->Html->image('AET/GreenCards/test.png', 				array('width' => 100, 'height' => 100, 'title' => 'Test Tile', 				'name' => 'Test-Tile', 				'class' => 'GreenTileIcon CreateBetaTest GreyOverlay sticky'))?></li>
@@ -128,25 +172,36 @@
 					<li><?php echo $this->Html->image('AET/GreenCards/unique.png', 				array('width' => 100, 'height' => 100, 'title' => 'Unique Tile', 			'name' => 'Unique-Tile',			'class' => 'GreenTileIcon CreateUnique sticky'))?></li>
 				</ul>
 			</div>
+			
+			<!-- The add green card button and helper icon -->
 			<div>
 				<ul id="footerHelpAndAddIcons">
-					<!--<li><img src='Icons2/BottomBarIcons/add%20green.png' title='Add green card' width=45 height=45 id="AddGreenCard"></li>-->
 					<?php echo $this->Html->image('AET/BottomBarIcons/add%20green.png', array('width' => 45, 'height' => 45, 'title' => 'Add green card', 'id' => 'AddGreenCard'))?>
-					<!--<li><img src='Icons2/BottomBarIcons/info%20green.png' title='Information for green cards' width=45 height=45 id="LearnMoreButton"></li>-->
 					<?php echo $this->Html->image('AET/BottomBarIcons/info%20green.png', array('width' => 45, 'height' => 45, 'title' => 'Information for green cards', 'id' => 'LearnMoreButton'))?>
 				</ul>
 			</div>
-		</div>  <!-- end tabbed_area -->	
+		</div>  <!-- end tabbed_area -->
+		
+		<!-- Initative footer -->
 		<div class="tabbed_area2">  
-		  
+			
+			<!-- The tabs -->
 			<ul class="tabs">
 				<li>
-					<a href="javascript:tabSwitch('tab_1', 'content_1');" id="tab_1" class="active footerTab">
-						Initative1
-					</a>
-				</li>  
+					<div id="tab_1" class="active footerTab">
+						Initative 1
+					</div>
+				</li>
+				
+				<!-- The new initative button -->
+				<li>
+					<div id="newInitiative">
+						<b>+</b>
+					</div>
+				</li>
 			</ul>  
 			
+			<!-- Where the stickies are placed when in an incentive -->
 			<div class="footerTabContent">
 				<ul id="DroppableList">
 					<li>
@@ -154,13 +209,18 @@
 					</li>
 				</ul>
 			</div>
-		</div>
-	</footer>
+		</div>		<!-- End of tabbed_area2 -->
+	</footer>	<!-- End of Footer -->
 </div> <!-- End surface -->
 
-		
+<!-- Start of the overlay window -->
+<!-- The grey overlay -->
 <div id="OverLay">
+
+	<!-- The window -->
 	<div id="Window">
+		
+		<!-- The list of Green cards -->
 		<div id="GreenCardExplained">
 			<ul id="GreenCardList">
 				<li><?php echo $this->Html->image('AET/GreenCards/test.png', 				array('width' => 100, 'height' => 100, 'title' => 'Test Tile', 				'class' => 'HelpIcon'))?></li>
@@ -177,9 +237,14 @@
 				<li><?php echo $this->Html->image('AET/GreenCards/unique.png', 				array('width' => 100, 'height' => 100, 'title' => 'Unique Tile', 			'class' => 'HelpIcon'))?></li>
 			</ul><!-- End GreenCardList -->
 		</div><!-- End GreenCardExplained -->
+		
+		<!-- The feedback content -->
 		<div id="Feedback">
-			<!--<img src='Icons2/Header/beta.png' title='Beta' width="100" height="200" id="BetaLogoForm">-->
+			
+			<!-- The beta icon -->
 			<?php echo $this->Html->image('AET//Header/beta.png', array('width' => 100, 'height' => 200, 'title' => 'Beta', 'id' => 'BetaLogoForm'))?>
+			
+			<!-- The feedback form -->
 			<form id="FeedBackForm">
 				<ul>
 					<li><div class="FormListElement">Topic: </br><input type="text" name="Topic" id="Topic" value="" /></div></li>
@@ -190,8 +255,10 @@
 					<li></br><input type="submit" value="submit" style="float:right;"/></li>
 				 </ul>
 			</form>
-		</div>
+		</div>	<!-- End of feedback -->
 	</div><!-- End Window-->
+	
+	<!-- A list of all the meaning of the green cards -->
 	<div id="GreenCardDescriber">
 		<ul>
 			<li class="greenCardDescription" id="TestDesc"><p>Techniue used with interactive media with the aim of testing the technology and interface.</p><p> However it can also be understood as shadowing or role-playing a prototyped experience to gather users' responses and feedback.</p></li>
@@ -211,30 +278,27 @@
 </div><!-- End overlay-->
 
 <?php
-function foo($bar)
+
+function checkForNull($value)
 {
-	if($bar == NULL)
+	if($value == NULL)
 	{
 		return 0;
 	}
 	else 
 	{
-		return $bar;
+		return $value;
 	}
 }
 ?>
-<?php foreach ($stickies as $sticky): ?>
-	<?php if($sticky['AudienceEngagement']['partOfIncentive'] == 0): ?>
+<?php //foreach ($stickies as $sticky): ?>
     <script>
-		CreateNewStickyStartUp(	'<?php echo $sticky['AudienceEngagement']['colour']; ?>',
-								'<?php echo $sticky['AudienceEngagement']['body']; ?>', 
-								<?php echo foo($sticky['AudienceEngagement']['partOfIncentive']); ?>, 
-								<?php echo $sticky['AudienceEngagement']['xPos']; ?>, 
-								<?php echo $sticky['AudienceEngagement']['yPos']; ?>, 
-								'<?php echo $sticky['AudienceEngagement']['imageName']; ?>');
+		//CreateNewStickyStartUp(	'<?php //echo $sticky['AudienceEngagement']['colour']; ?>',
+								'<?php //echo $sticky['AudienceEngagement']['body']; ?>', 
+								<?php //echo checkForNull($sticky['AudienceEngagement']['partOfIncentive']); ?>, 
+								<?php //echo $sticky['AudienceEngagement']['xPos']; ?>, 
+								<?php //echo $sticky['AudienceEngagement']['yPos']; ?>, 
+								'<?php //echo $sticky['AudienceEngagement']['imageName']; ?>'
+								//);
 	</script>
-	<?php endif; ?>
-<?php endforeach; ?>
-
-
-
+<?php //endforeach; ?>

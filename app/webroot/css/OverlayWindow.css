@@ -1,0 +1,66 @@
+/*
+	Start of Overlay Window styles
+*/
+#Window{
+	position:absolute; 
+	width:450px; 
+	height:350px; 
+	z-index:200; 
+	border:5px solid #FFFFFF; 
+	background: #565658; 
+	top: 50%; 
+	left: 50%; 
+	margin-top: -225px; 
+	margin-left: -175px;
+	border-radius: 15px;
+	z-index: 1001;
+}
+#OverLay{
+	position:absolute;
+	vertical-align: center;
+	background-image:url(../img/AET/dim.png);
+	top:0; 
+	left:0; 
+	width:100%;
+	height: 100%;	/* Make sure it extends beyond the screen */
+	z-index:1000;
+	display:none; 
+	text-align:left;
+}
+#GreenCardList{
+	list-style: none;
+	margin-left: 14px;
+	margin-top: 14px;
+}
+#GreenCardList li{
+	display: inline;
+}
+.HelpIcon {
+	z-index: 1004;
+}
+#GreenCardDescriber{
+	position:absolute; 
+	width:300px; 
+	height:300px; 
+	background-color: #339900;
+	z-index:200; 
+	border:5px solid #FFFFFF; 
+	top: 50%; 
+	left: 50%; 
+	margin-top: -200px; 
+	margin-left: -110px;
+	border-radius: 15px;
+	z-index: 1001;
+	display: none;
+}
+li.greenCardDescription p{
+	font-size: x-large;
+}
+#TestDesc, #CoDesignDesc, #ContributeDesc, #CreateDesc, #EvaluateDesc,
+#ExtraContentDesc, #ShowLoyaltyDesc, #SeeTheProcessDesc, #ShareDesc,
+#TalkToOthersDesc, #TalkToYouDesc, #UniqueDesc{
+	display: none;
+}
+/*
+	End of overlay window styles
+*/
